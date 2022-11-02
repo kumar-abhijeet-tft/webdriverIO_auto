@@ -9,8 +9,8 @@ class SecurePage extends Page {
     /**
      * define selectors using getter methods
      */
-    get flashAlert () {
-        return $('#flash');
+    get accountName () {
+        return $("//h1[@class='XY0ASe']");
     }
 }
 

@@ -4,10 +4,10 @@ Feature: Performing a login
     Given I am on the login page
 
     Scenario: Log in with a user 
-    When I login with <username> and <password>
-    Then I should see a flash message saying <message>
+    When I login with <tautomation551@gmail.com> and <Tautomation@123>
+    Then I should see account name <Automation>
 
-    Examples:
-      | username | password             | message                        |
-      | tomsmith | SuperSecretPassword! | You logged into a secure area! |
-      | foobar   | barfoo               | Your username is invalid!      |
+    # Examples:
+    #   | username | password             | message                        |
+    #   | tomsmith | SuperSecretPassword! | You logged into a secure area! |
+    #   | foobar   | barfoo               | Your username is invalid!      |

@@ -1,5 +1,6 @@
 
 
+const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 /**
@@ -10,16 +11,20 @@ class LoginPage extends Page {
      * define selectors using getter methods
      */
     get inputUsername () {
-        return $('#username');
+        return $('#identifierId');
     }
 
     get inputPassword () {
         return $('#password');
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    get btnNext () {
+        return $('#identifierNext');
     }
+
+    // get btnSubmit () {
+    //     return $('button[type="submit"]');
+    // }
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -27,8 +32,9 @@ class LoginPage extends Page {
      */
     async login (username, password) {
         await this.inputUsername.setValue(username);
+        await this.btnNext.click();
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.btnNext.click();
     }
 
     /**
