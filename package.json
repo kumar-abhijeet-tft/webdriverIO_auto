@@ -1,0 +1,29 @@
+{
+  "name": "webdriverio_auto",
+  "version": "1.0.0",
+  "description": "Automation using webdriverio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumar-abhijeet-tft/webdriverIO_auto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kumar-abhijeet-tft/webdriverIO_auto/issues"
+  },
+  "homepage": "https://github.com/kumar-abhijeet-tft/webdriverIO_auto#readme",
+  "devDependencies": {
+    "@wdio/cli": "^7.25.4",
+    "@wdio/cucumber-framework": "^7.25.4",
+    "@wdio/local-runner": "^7.25.4",
+    "@wdio/spec-reporter": "^7.25.4",
+    "chromedriver": "^107.0.2",
+    "cucumber": "^6.0.7",
+    "wdio-chromedriver-service": "^8.0.0",
+    "webdriverio": "^7.25.4"
+  }
+}
