@@ -34,9 +34,9 @@ class LoginPage extends Page {
         // let name_ele = await browser.$(LoginPageLocator.username);
         let inputUsername = "#identifierId"
         await browser.$(inputUsername).setValue(username);
-        let btnNext = '#identifierNext';
+        let btnNext = "//span[normalize-space()='Next']";
         await browser.$(btnNext).click();
-        let inputPassword = "//input[@name='password']"
+        let inputPassword = '//*[@id="password"]/div[1]/div/div[1]/input';
         // await browser.pause(30000);
         await browser.$(inputPassword).click();
         await browser.$(inputPassword).setValue(password);
