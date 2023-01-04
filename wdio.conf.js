@@ -49,20 +49,27 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-    
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    capabilities: {
+        Host: {
+            capabilities: {
+                browserName: 'chrome',
+                acceptInsecureCerts: true,
+                'goog:chromeOptions': {
+                      args: [
+                        '--disable-infobars',
+                        '--window-size=1920,720',
+                        '--use-fake-ui-for-media-stream',
+                        '--use-fake-device-for-media-stream ',
+                        '--no-sandbox',
+                        '--disable-gpu',
+                        '--disable-setuid-sandbox',
+                        '--disable-dev-shm-usage'
+
+                    ]
+                }
+            }
+        },
+    },
     //
     // ===================
     // Test Configurations
@@ -132,26 +139,37 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        [
+            'allure',
+            {
+                outputDir: 'allure-reports',
+            },
+        ],
+    ],
 
 
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./test/step-definitions/login.step.js'],
+        require: ['./test/step-definitions/*/**.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-        requireModule: [],
+        requireModule: ['@babel/register'],
         // <boolean> invoke formatters without executing steps
         dryRun: false,
         // <boolean> abort the run on first failure
         failFast: false,
+        // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        format: ['pretty'],
         // <boolean> hide step definition snippets for pending steps
         snippets: true,
         // <boolean> hide source uris
         source: true,
+        // <string[]> (name) specify the profile to use
+        profile: [],
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
@@ -214,8 +232,12 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: () => {
+        require('expect-webdriverio');
+        global.expect = global.expect;
+        const chai = require('chai');
+        global.chaiExpect = chai.expect;
+    }
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
