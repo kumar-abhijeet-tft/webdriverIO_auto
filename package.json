@@ -19,7 +19,8 @@
   "dependencies": {
     "@wdio/cli": "^7.9.0",
     "chromedriver": "^107.0.3",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "webdriverio": "^8.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

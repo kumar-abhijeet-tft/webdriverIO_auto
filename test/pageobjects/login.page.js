@@ -1,7 +1,7 @@
-const { default: $ } = require('webdriverio/build/commands/browser/$');
+
 const { chat1 } = require('../../Data/userData');
 const Page = require('./page');
-const { user } = require('../../Data/userData').chat1
+const user = require('../../Data/userData').chat1
 
 
 let broadVoiceLogo = "#prompt-logo-center";
@@ -11,6 +11,10 @@ let submitBtn = "//button[@type='submit']";
 
 
 class LoginPage extends Page {
+
+    async openURL(path){
+       await browser.url(`https://krompir-communicator.dev.lzy.net/${path}`)
+    }
 
     async verifyBroadVoiceLogo() {
         await expect($(broadVoiceLogo)).toBeExisting()
@@ -30,4 +34,4 @@ class LoginPage extends Page {
 module.exports = new LoginPage();
 
 
-//base action, page object, feaeture, step definition, reporter, Utilities, configuration, readme, hooks(before, After)
+//base action, page object, feature, step definition, reporter, Utilities, configuration, readme, hooks(before, After)
