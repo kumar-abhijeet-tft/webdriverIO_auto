@@ -1,6 +1,5 @@
 
 const { chat1 } = require('../../Data/userData');
-const Page = require('./page');
 const user = require('../../Data/userData').chat1
 
 
@@ -10,7 +9,7 @@ let inputPassword = "#password";
 let submitBtn = "//button[@type='submit']";
 
 
-class LoginPage extends Page {
+class LoginPage{
 
     async openURL(path){
        await browser.url(`https://krompir-communicator.dev.lzy.net/${path}`)

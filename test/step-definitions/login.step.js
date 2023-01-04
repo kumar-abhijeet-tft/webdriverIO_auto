@@ -1,7 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 
 const LoginPage = require('../pageobjects/login.page');
-const SecurePage = require('../pageobjects/secure.page');
 
 Given(/^I'm on the login page$/, async()=>{
     await LoginPage.openURL("");
