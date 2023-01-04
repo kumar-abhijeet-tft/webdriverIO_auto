@@ -13,6 +13,6 @@ When(/^I log in with Chat1$/, async() => {
 });
 
 Then(/^I should be logged in$/, async() => {
-    expect(browser.getUrl()).to.equal('chat');
+    await expect(browser).toHaveUrlContaining('chat');
 });
 

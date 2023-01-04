@@ -21,9 +21,9 @@ class LoginPage{
 
     async loginWithChat1 () {
         await (await $(inputUserName)).click();
-        await (await $(inputUserName)).sendKeys({ emailID:user.username });
+        await (await $(inputUserName)).setValue(user.username);
         await (await $(submitBtn)).click();
-        await (await $(inputPassword)).sendKeys({ pswd: user.password});
+        await (await $(inputPassword)).setValue(user.password);
         await (await $(submitBtn)).click();
     }
 
