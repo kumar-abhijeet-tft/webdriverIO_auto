@@ -1,4 +1,3 @@
-import { $ } from 'webdriverio/build/commands/browser';
 import Page from './page'
 
 let broadVoiceLogo = "#prompt-logo-center";

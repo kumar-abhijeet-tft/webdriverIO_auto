@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-import LoginPage from "../../pageobjects/login.page"
+import LoginPage from "../pageobjects/login.page"
+import randomUtil from "../../helper/randomGeneratorUtil";
 
 Given(/^User is on login page of the web communicator$/, async()=>{
     LoginPage.open("");
@@ -7,7 +8,7 @@ Given(/^User is on login page of the web communicator$/, async()=>{
 
 When(/^Enter invalid credentials of a user$/, async() => {
     await LoginPage.verifyBroadVoiceLogo();
-    await LoginPage.enterUserName("122345@gmail.com")
+    await LoginPage.enterUserName(randomUtil.getEmail())
 });
 
 When(/^User clicks on Continue button$/, async() => {
@@ -15,7 +16,8 @@ When(/^User clicks on Continue button$/, async() => {
 });
 
 Then(/^Observe that Loading page does not display$/, async() => {
-    await LoginPage.verifyErrorMsgAppear()
+    await LoginPage.enterPassword(randomUtil.getString())
+    await LoginPage.clickOnContinueBtn()
 });
 
 

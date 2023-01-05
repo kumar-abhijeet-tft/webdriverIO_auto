@@ -1,5 +1,5 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-import LoginPage from "../../pageobjects/login.page"
+import LoginPage from "../pageobjects/login.page"
 
 Given(/^I'm on the login page$/, async()=>{
     await LoginPage.open("");
